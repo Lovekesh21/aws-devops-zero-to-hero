@@ -18,10 +18,4 @@ phases:
       - docker tag my-flask-app:latest lovishh/ec2-test-repo:latest  # Correct the tag here
       - docker push lovishh/ec2-test-repo:latest  # Correct the tag here
 
-  post_build:
-    commands:
-      - echo "Build completed successfully!"
-artifacts:
-  files:
-    - '**/*'
-  base-directory: day-14/simple-python-app  # Correct the base directory here
+  base-directory: day-14/simple-python-app/  # Correct the base directory here
