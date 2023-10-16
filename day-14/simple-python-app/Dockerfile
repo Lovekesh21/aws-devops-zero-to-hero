@@ -1,23 +1,27 @@
-# Base image
-FROM python:3.8
+version: 0.2
 
-# Set the working directory inside the container
-WORKDIR /app
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r day-14/simple-python-app/requirements.txt
+  build:
+    commands:
+      - echo "Running tests..."
+      - cd day-14/simple-python-app/
+      - echo "Building Docker image..."
+      - docker login -u lovishh -p 001lovekesh@123
+      - docker build -t my-flask-app:latest .
+      - docker tag my-flask-app:latest lovishh/ec2-test-repo:latest  # Correct the tag here
+      - docker push lovishh/ec2-test-repo:latest  # Correct the tag here
 
-# Copy the requirements file
-COPY requirements.txt .
-
-# Install the project dependencies
-RUN pip install -r requirements.txt
-
-# Copy the application code into the container
-COPY . .
-
-# Expose the port the Flask application will be listening on
-EXPOSE 5000
-
-# Set environment variables, if necessary
-# ENV MY_ENV_VAR=value
-
-# Run the Flask application
-CMD ["python", "app.py"]
+  post_build:
+    commands:
+      - echo "Build completed successfully!"
+artifacts:
+  files:
+    - '**/*'
+  base-directory: day-14/simple-python-app  # Correct the base directory here
