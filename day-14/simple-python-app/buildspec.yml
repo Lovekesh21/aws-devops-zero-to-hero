@@ -13,8 +13,8 @@ phases:
       - echo "Running tests..."
       - cd day-14/simple-python-app/
       - echo "Building Docker image..."
-      - docker build -t "<>" 
-      - docker push <>
+      - docker build -t "simple-python-flask-app:latest" 
+      - docker push simple-python-flask-app:latest
   post_build:
     commands:
       - echo "Build completed successfully!"
