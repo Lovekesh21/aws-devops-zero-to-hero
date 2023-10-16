@@ -15,8 +15,8 @@ phases:
       - echo "Building Docker image..."
       - docker login -u lovishh -p 001lovekesh@123
       - docker build -t my-flask-app:latest .
-      - docker tag my-flask-app:latest lovishh/ec2-test-repo:tagname
-      - docker push lovishh/ec2-test-repo:tagname
+      - docker tag my-flask-app:latest lovishh/ec2-test-repo:latest  # Correct the tag here
+      - docker push lovishh/ec2-test-repo:latest  # Correct the tag here
 
   post_build:
     commands:
@@ -24,4 +24,4 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: ../simple-python-app
+  base-directory: day-14/simple-python-app  # Correct the base directory here
