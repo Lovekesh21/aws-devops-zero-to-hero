@@ -12,10 +12,6 @@ phases:
     commands:
       - echo "Running tests..."
       - cd day-14/simple-python-app/
-      - echo "Setting up Docker service..."
-      - systemctl restart docker
-      - usermod -a -G docker $USER
-      - newgrp docker
       - echo "Building Docker image..."
       - docker login -u lovishh -p 001lovekesh@123
       - docker build -t my-flask-app:latest .
