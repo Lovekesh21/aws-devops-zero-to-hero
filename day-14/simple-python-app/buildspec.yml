@@ -13,7 +13,7 @@ phases:
       - echo "Running tests..."
       - cd day-14/simple-python-app/
       - echo "Setting up Docker service..."
-      - service docker start
+      - systemctl restart docker
       - usermod -a -G docker $USER
       - newgrp docker
       - echo "Building Docker image..."
